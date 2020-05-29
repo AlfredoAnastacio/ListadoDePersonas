@@ -13,6 +13,19 @@ import { Component, OnInit } from '@angular/core';
 export class PersonasComponent {
 
   agregarPersona = false;
+  agregarPersonaStatus = 'No se ha agregado alguna persona';
+
+  constructor() {
+    setTimeout(
+      () => {
+        this.agregarPersona = true;
+      }
+    );
+  }
+
+  onCrearPersona() {
+    this.agregarPersonaStatus = 'Persona agregada';
+  }
 
 
 }
