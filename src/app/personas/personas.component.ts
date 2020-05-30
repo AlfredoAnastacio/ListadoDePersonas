@@ -14,7 +14,7 @@ export class PersonasComponent {
 
   agregarPersona = false;
   agregarPersonaStatus = 'No se ha agregado alguna persona';
-  tituloPersona = '';
+  tituloPersona = 'Ingeniero';
 
   constructor() {
     setTimeout(

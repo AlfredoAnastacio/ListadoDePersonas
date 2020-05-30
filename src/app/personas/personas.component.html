@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <label>Titulo persona</label>
-      <input type="text" class="form-control" (input)="onModificarPersona($event)">
+      <input type="text" class="form-control" [(ngModel)]="tituloPersona">
       {{ tituloPersona }}
       <h1>Listado de personas</h1>
       <button class="btn btn-primary" [disabled]="!agregarPersona" (click)="onCrearPersona()">Agregar persona</button>
