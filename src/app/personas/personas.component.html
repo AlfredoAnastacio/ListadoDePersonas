@@ -5,8 +5,10 @@
       <input type="text" class="form-control" [(ngModel)]="tituloPersona">
       {{ tituloPersona }}
       <h1>Listado de personas</h1>
-      <button class="btn btn-primary" [disabled]="!agregarPersona" (click)="onCrearPersona()">Agregar persona</button>
-      <p>{{ agregarPersonaStatus }}</p>
+      <button class="btn btn-primary"
+              [disabled]="!agregarPersona"
+              (click)="onCrearPersona()">Agregar persona</button>
+            <p *ngIf="personaCreada">{{ agregarPersonaStatus }} con título de {{ tituloPersona }}</p>
       <app-persona></app-persona>
     </div>
   </div>
