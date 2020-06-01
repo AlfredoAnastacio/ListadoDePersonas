@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Persona } from '../models/persona';
+import { LoggingService } from '../services/logging-service.service';
 
 @Component({
   selector: 'app-formulario',
@@ -12,13 +13,16 @@ export class FormularioComponent implements OnInit {
   nombreInput: string;
   apellidoInput: string;
 
-  constructor() { }
+  constructor(
+    public loggingService: LoggingService
+  ) { }
 
   ngOnInit(): void {
   }
 
   onAgregarPersona() {
     const persona1 = new Persona(this.nombreInput, this.apellidoInput);
+    this.loggingService.enviaMensajeAConsola('enviamos persona: ' + persona1.nombre);
     this.personaCreada.emit(persona1);
   }
 
