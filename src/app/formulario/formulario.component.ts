@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Persona } from '../models/persona';
 import { LoggingService } from '../services/logging-service.service';
+import { PersonasService } from '../services/personas.service';
 
 @Component({
   selector: 'app-formulario',
@@ -9,12 +10,12 @@ import { LoggingService } from '../services/logging-service.service';
 })
 export class FormularioComponent implements OnInit {
 
-  @Output() personaCreada = new EventEmitter<Persona>();
   nombreInput: string;
   apellidoInput: string;
 
   constructor(
-    public loggingService: LoggingService
+    public loggingService: LoggingService,
+    private personasService: PersonasService
   ) { }
 
   ngOnInit(): void {
@@ -22,8 +23,7 @@ export class FormularioComponent implements OnInit {
 
   onAgregarPersona() {
     const persona1 = new Persona(this.nombreInput, this.apellidoInput);
-    this.loggingService.enviaMensajeAConsola('enviamos persona: ' + persona1.nombre);
-    this.personaCreada.emit(persona1);
+    this.personasService.agregarPersona(persona1);
   }
 
 }
