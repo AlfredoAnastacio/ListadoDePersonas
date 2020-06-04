@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Persona } from '../models/persona';
 import { LoggingService } from './logging-service.service';
 
@@ -7,14 +7,19 @@ import { LoggingService } from './logging-service.service';
 })
 export class PersonasService {
 
+  constructor(
+    private loggingServices: LoggingService
+  ) {}
+  static saludar: any;
+
   personas: Persona[] = [
     new Persona('Juan', 'Perez'),
     new Persona('Laura', 'Juarez')
   ];
 
-  constructor(
-    private loggingServices: LoggingService
-  ) {}
+  saludar = new EventEmitter<number>();
+
+
 
   agregarPersona(persona: Persona) {
     this.loggingServices.enviaMensajeAConsola('persona: ' + persona.nombre)
